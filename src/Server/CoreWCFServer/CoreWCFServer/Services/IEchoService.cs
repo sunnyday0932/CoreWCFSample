@@ -1,6 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Net;
 using System.Runtime.Serialization;
 using CoreWCF;
+using CoreWCF.OpenApi.Attributes;
+using CoreWCF.Web;
 
 namespace CoreWCFServer.Services;
 
@@ -19,21 +22,27 @@ public class EchoFault
 }
 
 [ServiceContract]
+[OpenApiBasePath("/api")]
 public interface IEchoService
 {
     [OperationContract]
+    [WebGet(UriTemplate = "/hello/{text}")]
+    [OpenApiResponse(ContentTypes = new[] { "application/json"}, Description = "Success", StatusCode = HttpStatusCode.OK, Type = typeof(string))]
     string Echo(string text);
 
     [OperationContract]
-    string ComplexEcho(EchoMessage text);
+    [WebInvoke(Method = "POST", UriTemplate = "/echo")]
+    [OpenApiResponse(ContentTypes = new[] { "application/json"}, Description = "Success", StatusCode = HttpStatusCode.OK, Type = typeof(EchoMessage))]
+    string ComplexEcho(
+        [OpenApiParameter(ContentTypes = new[] { "application/json"}, Description = "Text")] EchoMessage text);
 
     [OperationContract]
     [FaultContract(typeof(EchoFault))]
     string FailEcho(string text);
 }
 
-[DataContract]
+[DataContract(Name = "EchoMessage")]
 public class EchoMessage
 {
-    [AllowNull] [DataMember] public string Text { get; set; }
+    [AllowNull] [DataMember][OpenApiProperty(Description = "Text")] public string Text { get; set; }
 }
