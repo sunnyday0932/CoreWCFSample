@@ -6,6 +6,10 @@
 - [WebHttpBinding](https://corewcf.github.io/blog/2022/04/13/webhttp)
 
 ## Basic Sample
-Server contract binding wiht Http/WsHttp/NetTcp
+Contract binding wiht Http/WsHttp/NetTcp
+
+Server
 ![Server](https://github.com/sunnyday0932/CoreWCFSample/blob/main/pictures/1.jpg)
+
+Client
 ![Client](https://github.com/sunnyday0932/CoreWCFSample/blob/main/pictures/2.jpg)
