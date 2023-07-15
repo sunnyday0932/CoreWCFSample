@@ -397,3 +397,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 /.idea/
+src/Client/CoreWCFClient/.idea
+src/Server/CoreWCFServer/.idea
