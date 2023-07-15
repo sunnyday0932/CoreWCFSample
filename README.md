@@ -5,7 +5,7 @@
 - [WebHttp Integration Test](https://github.com/CoreWCF/CoreWCF/tree/main/src/CoreWCF.WebHttp/tests)
 - [WebHttpBinding](https://corewcf.github.io/blog/2022/04/13/webhttp)
 
-## Basic Sample
+## Basic
 Contract binding wiht Http/WsHttp/NetTcp
 
 Server
